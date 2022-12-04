@@ -59,12 +59,12 @@ img.p-img {
     align-items: center;
 }
 
-.profile-user-name{
+.profile-user-name {
     color: #FFFFFF;
-  font-family: Roboto;
-  font-size: 14px;
-  letter-spacing: 0;
-  line-height: 24px;
+    font-family: Roboto;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 24px;
 }
 
 .profile-img {

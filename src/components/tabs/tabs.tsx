@@ -22,6 +22,7 @@ const Tabs = () => {
                 <Route path="/" element={<Photos />} />
                 <Route path="/video" element={<Videos />} />
                 <Route path="/fav" element={<Favourites />} />
+
             </Routes>
         </div>
     )

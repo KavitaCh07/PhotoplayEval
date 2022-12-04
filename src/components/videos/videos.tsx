@@ -4,7 +4,7 @@ import whiteHeart from '../../assets/icon_favourite.png';
 import profileImg from '../../assets/Oval.png';
 import r4 from '../../assets/Rectangle4.png';
 import playButton from '../../assets/playButton.png';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
@@ -95,7 +95,7 @@ const Videos = () => {
               // console.log("500000", state.videos[0].url);
 
               const favHandler = () => {
-                setSearchInputData(video.video_files[1].link);
+                setSearchInputData(video.video_files[0].link);
                 setSearched(true);
               };
 
@@ -109,22 +109,28 @@ const Videos = () => {
                   fav = false
                 }
               }
+              const toComponentB = (video: any) => {
+                navigate('/vmodal', { state: { url: video.video_files[0].link, id: video.video_files[0].id, usernmae: video.photographer, userphoto: video.user.url } });
+                // <Link to={pathname: "/pmodal", state:{data}}></Link>
+              }
+
               return (
                 // <>
                 // {console.log(video &&  video.url && video.url)}
-                <div className='photo-part' key={i} onClick={() => {favHandler();}} >
-                  <iframe src={video && video.video_files[1] && video.video_files[1].link} className='p-img'></iframe>
+                <div className='photo-part' key={i} onClick={() => { favHandler(); }} >
+                  <Link to="/vmodal" state={{ url: video.video_files[0].link, usernmae: video.user.name, id: video.video_files[0].id, userphoto: video.user.url }} key={video.id} className="linkButton">
+                    <img src={video && video.image} width="320" height="300" className='p-img' ></img></Link>
                   {!fav ? (<div className="heart" onClick={() => { addFav(video); }} >
                     <img src={whiteHeart} className='h-img' alt="" />
                   </div>) :
                     (<div className="heart" onClick={() => { removeItem(video); }}>
                       <img src={redHeart} className='h-img' alt="" />
                     </div>)}
-                  <div className="playButton"><img src={playButton} className='play-img' alt="" /></div>
+                  <div className="playButton"><img src={playButton} className='play-img' onClick={() => { toComponentB(video) }} alt="" /></div>
                   <div className='user-details'>
-                  <div className="profile"><img src={video && video.user && video.user.url} className='profile-img' alt="" /></div>
-                  <div className='profile-user-name'>{video && video.user && video.user.name}</div>
-                </div>
+                    <div className="profile"><img src={video && video.user && video.user.url} className='profile-img' alt="" /></div>
+                    <div className='profile-user-name'>{video && video.user && video.user.name}</div>
+                  </div>
                 </div>
                 // </>
               )

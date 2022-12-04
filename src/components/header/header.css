@@ -1,17 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-.maskImage{
-height: 330px;
-width: 100%;
-margin: auto;
-background-image: url('../../assets/Mask.png');
-background-position: top;
+.maskImage {
+    height: 330px;
+    width: 100%;
+    margin: auto;
+    background-image: url('../../assets/Mask.png');
+    background-position: top;
 }
 
-.background{
-width: 100%;
-position: relative;
+.background {
+    width: 100%;
+    position: relative;
 
 }
 
@@ -21,7 +21,7 @@ position: relative;
     /* row-gap: 1rem; */
 }
 
-.logo{
+.logo {
     display: flex;
 }
 
@@ -59,7 +59,7 @@ form.search-form {
     text-align: center;
 }
 
-.mob-w1{
+.mob-w1 {
     display: none;
 }
 
@@ -96,56 +96,58 @@ form.search-form {
     padding: 0.5rem 1rem;
     position: absolute;
     /* left: 32rem; */
-    /* top: 1.9px;
+/* top: 1.9px;
     right: 0.1rem; 
 
   .searchPosition {
         /* position: relative; */
-        /* display: flex;
+/* display: flex;
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
         padding: 1rem 0 0 0; */
-        /* width: 100%; */
-        /* gap: 21rem; */
+/* width: 100%; */
+/* gap: 21rem; */
 
-        .searchPosition {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.6rem 0 0 0;
-        }
-    
-        .searchButton {
-            color: #FFFFFF;
-            font-family: Roboto;
-            font-size: 14px;
-            font-weight: bold;
-            letter-spacing: 0.32px;
-            line-height: 16px;
-            text-align: center;
-            border-radius: 4px;
-            background-color: #560014;
-            padding: 0.5rem 1rem;
-            position: absolute;
-            right: 11.2rem;
-        }
-          
-    form.search-form {
-        
-        display: flex;
-        /* flex-wrap: wrap; */
-        width: 75%;
-    }
+.searchPosition {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.6rem 0 0 0;
+}
 
-    .search-input {
-        width: 100%;
-        padding: 0.75rem;
-        border-radius: 4px;
-        background-color: #FFFFFF;
-        border: none;
-        outline: none;
-    }
+.searchButton {
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.32px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 4px;
+    background-color: #560014;
+    outline: none;
+    border: none;
+    padding: 0.7rem 1rem;
+    position: absolute;
+    right: 0.1rem;
+}
+
+form.search-form {
+
+    display: flex;
+    /* flex-wrap: wrap; */
+    width: 75%;
+}
+
+.search-input {
+    width: 100%;
+    padding: 0.75rem;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    border: none;
+    outline: none;
+}
 
 .phone-search-img {
     display: none;
@@ -159,11 +161,11 @@ form.search-form {
         flex-direction: column;
     }
 
-    .w1{
+    .w1 {
         display: none;
     }
 
-    .mob-w1{
+    .mob-w1 {
         display: flex;
         color: #FFFFFF;
         font-family: Roboto;
@@ -175,11 +177,11 @@ form.search-form {
         padding-bottom: 0.7rem;
     }
 
-    .w2{
+    .w2 {
         padding-bottom: 0.8rem;
     }
 
-    .searchButton{
+    .searchButton {
         display: none;
     }
 
@@ -284,7 +286,3 @@ form.search-form {
     }
 
 }
-
-
-
-

@@ -1,21 +1,17 @@
 import React from 'react';
 import './photos.css';
-import r4 from '../../assets/Rectangle4.png';
-import r5 from '../../assets/Rectangle5.png';
-import r6 from '../../assets/Rectangle6.png';
 import whiteHeart from '../../assets/icon_favourite.png';
 import profileImg from '../../assets/Oval.png';
 import Pmodal from '../pmodal/pmodal';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { NavLink, Route, Routes, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import redHeart from '../../assets/redSmall.png';
 import { AddPhoto } from '../../redux/photoSlice';
 import { Link } from 'react-router-dom';
-// import { isLabelWithInternallyDisabledControl } from '@testing-library/user-event/dist/utils';
 
-const Photos = () => {
+const Photos = (props: any) => {
   const navigate = useNavigate();
   const [fav, setFav] = useState(false);
   const [favActive, setFavActive] = useState(false);
@@ -24,10 +20,7 @@ const Photos = () => {
   const dispatch = useDispatch();
   const [searchInputData, setSearchInputData] = useState();  //to take input data from search bar
 
-
-
   const state = useSelector((state: any) => state.photoVideos.photo) // for the data to get from header page
-
   const photoVideos = useSelector((state: any) => state.photoVideos.photo);
 
   useEffect(() => {
@@ -61,6 +54,8 @@ const Photos = () => {
   //   }
 
   // });
+
+  // const navigate = useNavigate();
 
   const addFav = (data: any) => {
     console.log(data);
@@ -110,7 +105,7 @@ const Photos = () => {
     <div className='photo'>
       <div className="photos-div">
         <div className="photo-row">
-          {state && state.photos && state.photos.map((data: any, i: any) => {
+          {state && state.photos && state.photos.map((data: any, i: any, id: any) => {
 
             const favHandler = () => {
               setSearchInputData(data.src.small);
@@ -127,9 +122,16 @@ const Photos = () => {
               }
             }
 
-            return (<div className='photo-part' key={i} onClick={() => {favHandler();}}>
-              <img src={data && data.src && data.src.small} className='p-img' alt="" />
-              {/* <Link to="/pmodal" className="linkButton"></Link> */}
+            const toComponentB = (data: any) => {
+              navigate('/pmodal', { state: { srcc: data.src.landscape, usernmae: data.photographer, alt: data.alt, userphoto: data.photographer_url } });
+              // <Link to={pathname: "/pmodal", state:{data}}></Link>
+            }
+            // console.log("photodata", state)
+
+            // console.log("pmodal", data.id);
+            return (<div className='photo-part' key={i} onClick={() => { favHandler(); }}>
+              <Link to="/pmodal" state={{ srcc: data.src.landscape, usernmae: data.photographer, alt: data.alt, userphoto: data.photographer_url }} key={data.id} className="linkButton">
+                <img src={data && data.src && data.src.small} className='p-img' onClick={() => { toComponentB(data) }} alt="" /></Link>
               {!fav ? (<div className="heart" >
                 <img src={whiteHeart} className='h-img' alt="" onClick={() => { addFav(data); }} />
               </div>) :
@@ -139,9 +141,9 @@ const Photos = () => {
               }
 
               <div className='user-details'>
-          <div className="profile"><img src={data && data.photographer_url} className='profile-img' alt="" /></div>
-          <div className='profile-user-name'>{data && data.photographer}</div>
-          </div>
+                <div className="profile"><img src={data && data.photographer_url} className='profile-img' alt="" /></div>
+                <div className='profile-user-name'>{data && data.photographer}</div>
+              </div>
             </div>)
           })}
 
