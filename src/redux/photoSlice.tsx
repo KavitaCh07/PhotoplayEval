@@ -4,12 +4,14 @@ export interface CounterState {
     photo: string;
     video: string;
     favourites: any;
+    favouritesVideo: any;
 }
 
 const initialState = {
     photo: [],
     video:[],
     favourites: JSON.parse(localStorage.getItem("fav") || "[]"),
+    favouritesVideo: JSON.parse(localStorage.getItem("favVideo") || "[]"),
 }
 
 const PhotoSlice = createSlice({
@@ -33,8 +35,8 @@ const PhotoSlice = createSlice({
         },
 
         AddFovouritesVideos: (state: any, { payload }) => {
-            state.photos.favourites.push(payload);
-            localStorage.setItem("video", JSON.stringify(state.photos.favourites));
+            state.video.favouritesVideo.push(payload);
+            localStorage.setItem("favVideo", JSON.stringify(state.video.favouritesVideo));
             window.location.reload();
         }
     },

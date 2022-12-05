@@ -113,11 +113,6 @@ const Vmodal = (props: any) => {
               (<div className="heart">
                 <img src={redHeart} className='h-img' alt="" />
               </div>)}
-            {/* <div className="zoom-button">
-            <button className='plus'><img src={zoomplus} alt="" /></button>
-            <button className='minus'><img src={zoomminus} alt="" /></button>
-            </div> */}
-            {/* <div className="about-imag">{location.state.alt}</div> */}
           </div>
           <div className="big-user-profile">
             <div className="pro-img"><img src={location.state.userphoto} alt="" /></div>

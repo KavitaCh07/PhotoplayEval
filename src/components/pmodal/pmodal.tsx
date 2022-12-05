@@ -11,6 +11,7 @@ import oval from '../../assets/Oval.png';
 import zoomplus from '../../assets/zoomPlus.png';
 import zoomminus from '../../assets/zoomMinus.png';
 import { useLocation } from 'react-router-dom';
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 
 
 const Pmodal = (props: any) => {
@@ -38,18 +39,22 @@ const Pmodal = (props: any) => {
           </form>
         </div>
       </div>
+      <TransformWrapper initialScale={1}
+        initialPositionX={200}
+        initialPositionY={100}>
+          {({ zoomIn, zoomOut, ...rest})  => (
       <div className="displayPhoto">
         <div className="big-image">
-       
+        <TransformComponent>
           <img src={location.state.srcc} alt="image" className='modalPhoto' />
+      </TransformComponent>
         </div>
-
         <div className="photo-details">
           <div className="first-line">
             <div className="big-heart"><img src={bigHeart} alt="" /></div>
             <div className="zoom-button">
-              <button className='plus'><img src={zoomplus} alt="" /></button>
-              <button className='minus'><img src={zoomminus} alt="" /></button>
+              <button className='plus'  onClick={() => zoomIn()}><img src={zoomplus} alt=""/></button>
+              <button className='minus'  onClick={()=> zoomOut()}><img src={zoomminus} alt=""/></button>
             </div>
             <div className="about-imag">{location.state.alt}</div>
           </div>
@@ -58,8 +63,10 @@ const Pmodal = (props: any) => {
             <div className="photographer-name">{location.state.usernmae}</div>
           </div>
         </div>
-
       </div>
+      )}
+      </TransformWrapper>
+
       <div className="foot2">
         <div className='robo-text'>© Robosoft Technologies 1996-2021</div>
       </div>

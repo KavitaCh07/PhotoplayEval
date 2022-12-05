@@ -34,14 +34,14 @@ const Videos = () => {
   }, [fetchedData]);
 
   useEffect(() => {
-    Searched && navigate("/pmodal");
+    Searched && navigate("/");
   }, [photoVideos]);
 
   // useEffect(() => {  // useEffect for the data to get from header page
   //   console.log("photos", state.videos);
   // }, [state]);
 
-  let previousData = JSON.parse(localStorage.getItem("fav") || "[]");
+  let previousData = JSON.parse(localStorage.getItem("favVideo") || "[]");
 
   const addFav = (data: any) => {
     console.log(data);
@@ -57,8 +57,8 @@ const Videos = () => {
     } else {
       if (data !== "" && data.message !== "Internal Server Error") {
         previousData.push(data);
-        localStorage.setItem("fav", JSON.stringify(previousData));
-        previousData = JSON.parse(localStorage.getItem("fav") || "[]");
+        localStorage.setItem("favVideo", JSON.stringify(previousData));
+        previousData = JSON.parse(localStorage.getItem("favVideo") || "[]");
         // window.location.reload();
         // setFav(true);
         // setFavActive(!favActive);
@@ -69,7 +69,7 @@ const Videos = () => {
   };
 
   const removeItem = (data: any) => {
-    const favourites = JSON.parse(localStorage.getItem("fav") || "[]");
+    const favourites = JSON.parse(localStorage.getItem("favVideo") || "[]");
     console.log("id", favourites);
     let remId = -1;
     for (let i = 0; i < favourites.length; i++) {
@@ -80,7 +80,7 @@ const Videos = () => {
     console.log("remId", remId);
     favourites.splice(remId, 1);
     console.log("new remId", favourites);
-    localStorage.setItem("fav", JSON.stringify(favourites));
+    localStorage.setItem("favVideo", JSON.stringify(favourites));
     setFav(!fav);
     // window.location.reload();
   };
